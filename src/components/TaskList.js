@@ -8,7 +8,8 @@ import {
   Tooltip, 
   Toast,
   Modal,
-  TextContainer
+  TextContainer,
+  Box
 } from '@shopify/polaris';
 import { EditMinor, DeleteMinor } from '@shopify/polaris-icons';
 import { useNavigate } from 'react-router-dom';
@@ -128,7 +129,7 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
   ) : null;
 
   return (
-    <div style={{ marginTop: '20px' }}>
+    <Box style={{ marginTop: '20px' }}>
       {toastMarkup}
 
       {/* Delete Confirmation Modal */}
@@ -155,9 +156,14 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
         </Modal.Section>
       </Modal>
 
+
+      <Box style={{ marginBottom: '20px', fontSize: '16px' }}>
+          Pending tasks: {pendingTasks.length}
+      </Box>
+
       {/* Pending Tasks Table */}
       <Card title="Pending Tasks" style={{ marginBottom: '20px' }}>
-        <div style={{ overflowX: 'auto' }}>
+        <Box style={{ overflowX: 'auto' }}>
           <DataTable
             columnContentTypes={['text', 'text', 'text', 'icon', 'icon']}
             headings={['Name', 'Description', 'Status', 'Edit', 'Delete']}
@@ -165,9 +171,9 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
             columnWidths={['20%', '50%', '15%', '7.5%', '7.5%']}
             fixedLayout
           />
-        </div>
+        </Box>
         {pendingTasks.length > rowsPerPage && (
-          <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
+          <Box style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
             <Pagination
               hasPrevious={pendingPage > 1}
               onPrevious={() => setPendingPage(pendingPage - 1)}
@@ -178,14 +184,18 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
                 pendingTasks.length
               )} of ${pendingTasks.length}`}
             />
-          </div>
+          </Box>
         )}
       </Card>
 
+      <Box style={{ marginBottom: '20px', marginTop: '20px', fontSize: '16px' }}>
+          Completed tasks: {pendingTasks.length}
+      </Box>
+
       {/* Completed Tasks Table */}
-      <div style={{ margin: '20px 0px 40px 0px' }}>
+      <Box style={{ margin: '20px 0px 40px 0px' }}>
         <Card title="Completed Tasks">
-          <div style={{ overflowX: 'auto' }}>
+          <Box style={{ overflowX: 'auto' }}>
             <DataTable
               columnContentTypes={['text', 'text', 'text', 'icon', 'icon']}
               headings={['Name', 'Description', 'Status', 'Edit', 'Delete']}
@@ -193,9 +203,9 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
               columnWidths={['20%', '50%', '15%', '7.5%', '7.5%']}
               fixedLayout
             />
-          </div>
+          </Box>
           {completedTasks.length > rowsPerPage && (
-            <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
+            <Box style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
               <Pagination
                 hasPrevious={completedPage > 1}
                 onPrevious={() => setCompletedPage(completedPage - 1)}
@@ -206,10 +216,10 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
                   completedTasks.length
                 )} of ${completedTasks.length}`}
               />
-            </div>
+            </Box>
           )}
         </Card>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
