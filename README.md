@@ -1,4 +1,4 @@
-# Getting Started with Create Task Manager React App
+![image](https://github.com/user-attachments/assets/2a7ec24a-7f1c-49ec-92ea-b425dcc4fbf0)# Getting Started with Create Task Manager React App
 
 Frontend (React with Shopify Polaris) Implementation
 
@@ -36,15 +36,20 @@ Then wrap routes with it in App.js:
 
 5. Add Pagination
 
-6. Keep Create and Update modal same form field
+6. Form Validation
 
-7. Full responsive app
+![Form validation ](https://github.com/user-attachments/assets/72555ed1-b988-4137-9ec8-b7c06cd43b8c)
 
-8. For unit testing apply few formula
+7. Keep Create and Update modal same form field
 
-9. Finally i deploy my front end full project to vercel
+8. Full responsive app
+
+9. For unit testing apply few formula
+
+10. Finally i deploy my front end full project to vercel
 
 Project URL : https://task-manager-frontend-kappa-orcin.vercel.app/
+
 
 
 ## Available Scripts
