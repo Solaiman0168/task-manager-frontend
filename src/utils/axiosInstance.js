@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Centralized API configuration
 const API_CONFIG = {
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api',
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'https://devjahangir.com/solaiman/api',
   endpoints: {
     tasks: '/tasks',
   }
