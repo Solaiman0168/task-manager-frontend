@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/2a7ec24a-7f1c-49ec-92ea-b425dcc4fbf0)# Getting Started with Create Task Manager React App
+# Getting Started with Create Task Manager React App
 
 Frontend (React with Shopify Polaris) Implementation
 
