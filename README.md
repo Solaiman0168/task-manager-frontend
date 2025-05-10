@@ -1,6 +1,51 @@
-# Getting Started with Create React App
+# Getting Started with Create Task Manager React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend (React with Shopify Polaris) Implementation
+
+1. Setup React Project
+
+npx create-react-app task-manager-frontend  <br> <br>
+
+2. Install Dependencies
+
+npm install @shopify/polaris @shopify/polaris-icons axios react-router-dom
+
+3. Setup Project Structure
+   
+I add components and pages
+
+TaskList.js, TaskForm.js, Layout.js etc. for components
+
+HomePage.js, CreateTaskPage.js, EditTaskPage.js for pages 
+
+Additional Features Implementation
+
+1. Search/Filter Functionality Add to HomePage.js:
+
+2. Lazy Loading also N Progress bar
+
+Create a lazy-loaded version
+
+3. Error Handling
+
+Create an ErrorBoundary component
+
+Then wrap routes with it in App.js:
+
+4. For Task create, update, delete used polaris toast
+
+5. Add Pagination
+
+6. Keep Create and Update modal same form field
+
+7. Full responsive app
+
+8. For unit testing apply few formula
+
+9. Finally i deploy my front end full project to vercel
+
+Project URL : https://task-manager-frontend-kappa-orcin.vercel.app/
+
 
 ## Available Scripts
 
@@ -39,32 +84,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
