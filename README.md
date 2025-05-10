@@ -36,15 +36,23 @@ Then wrap routes with it in App.js:
 
 5. Add Pagination
 
-6. Keep Create and Update modal same form field
+6. Form Validation
 
-7. Full responsive app
+![Form validation ](https://github.com/user-attachments/assets/72555ed1-b988-4137-9ec8-b7c06cd43b8c)
 
-8. For unit testing apply few formula
+![Form validation for edit task](https://github.com/user-attachments/assets/c25fbaab-a9a3-461f-98ad-6f3cf924bd95)
 
-9. Finally i deploy my front end full project to vercel
+
+7. Keep Create and Update modal same form field
+
+8. Full responsive app
+
+9. For unit testing apply few formula
+
+10. Finally i deploy my front end full project to vercel
 
 Project URL : https://task-manager-frontend-kappa-orcin.vercel.app/
+
 
 
 ## Available Scripts
