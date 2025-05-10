@@ -1,14 +1,14 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy } from 'react';
 import { AppProvider } from '@shopify/polaris';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import '@shopify/polaris/build/esm/styles.css';
-import HomePage from './pages/HomePage';
-import CreateTaskPage from './pages/CreateTaskPage';
 import Layout from './components/Layout';
 import ErrorBoundary from './components/ErrorBoundary';
 
-// Lazy load the EditTaskPage component
+// Lazy load component
 const EditTaskPage = lazy(() => import('./pages/EditTaskPage'));
+const CreateTaskPage = lazy(() => import('./pages/CreateTaskPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
 
 function App() {
   return (
@@ -21,11 +21,7 @@ function App() {
               <Route path="/create" element={<CreateTaskPage />} />
               <Route 
                 path="/edit/:id" 
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <EditTaskPage />
-                  </Suspense>
-                } 
+                element={ <EditTaskPage />  } 
               />
             </Routes>
           </ErrorBoundary>
