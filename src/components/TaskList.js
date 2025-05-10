@@ -6,7 +6,7 @@ import {
   Badge, 
   Pagination, 
   Tooltip, 
-  Banner, 
+  Toast,
   Modal,
   TextContainer
 } from '@shopify/polaris';
@@ -22,13 +22,14 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
   const [completedPage, setCompletedPage] = useState(1);
   const [rowsPerPage] = useState(5);
 
-  
   // Delete confirmation modal state
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
 
-   // Status messages
-   const [activeBanner, setActiveBanner] = useState(null);
+  // Toast state
+  const [activeToast, setActiveToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [isErrorToast, setIsErrorToast] = useState(false);
 
   const handleDeleteClick = (id) => {
     setTaskToDelete(id);
@@ -39,15 +40,19 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
     try {
       await axiosInstance.delete(axiosInstance.getUrl('tasks', taskToDelete));
       onTaskDeleted();
-      setActiveBanner({
-        status: 'success',
-        message: 'Task deleted successfully!'
-      });
+      
+      // Set success toast
+      setToastMessage('Task deleted successfully!');
+      setIsErrorToast(false);
+      setActiveToast(true);
+      
+      // Store success message in session storage to persist across navigation
+      sessionStorage.setItem('taskDeleteSuccess', 'true');
+      
     } catch (error) {
-      setActiveBanner({
-        status: 'critical',
-        message: error.response?.data?.message || 'Failed to delete task'
-      });
+      setToastMessage(error.response?.data?.message || 'Failed to delete task');
+      setIsErrorToast(true);
+      setActiveToast(true);
       console.error('Delete error:', error);
     } finally {
       setDeleteModalOpen(false);
@@ -114,19 +119,17 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
     />,
   ]);
 
+  const toastMarkup = activeToast ? (
+    <Toast 
+      content={toastMessage} 
+      onDismiss={() => setActiveToast(false)} 
+      error={isErrorToast}
+    />
+  ) : null;
+
   return (
     <div style={{ marginTop: '20px' }}>
-
-      {/* Status Banner */}
-      {activeBanner && (
-        <Banner
-          status={activeBanner.status}
-          onDismiss={() => setActiveBanner(null)}
-          style={{ marginBottom: '16px' }}
-        >
-          {activeBanner.message}
-        </Banner>
-      )}
+      {toastMarkup}
 
       {/* Delete Confirmation Modal */}
       <Modal
@@ -151,7 +154,6 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
           </TextContainer>
         </Modal.Section>
       </Modal>
-
 
       {/* Pending Tasks Table */}
       <Card title="Pending Tasks" style={{ marginBottom: '20px' }}>

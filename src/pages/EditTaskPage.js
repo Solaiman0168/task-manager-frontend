@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Page, Banner } from '@shopify/polaris';
+import { Page, Banner, Toast } from '@shopify/polaris';
 import TaskForm from '../components/TaskForm';
 import { useParams, useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
@@ -14,6 +14,8 @@ export default function EditTaskPage() {
   const [task, setTask] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [activeToast, setActiveToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -30,22 +32,40 @@ export default function EditTaskPage() {
     };
 
     fetchTask();
-  }, [id]); 
+  }, [id]);
 
   const handleSubmit = async (taskData) => {
     setLoading(true);
     setError(null);
+    startProgress();
     try {
       await axiosInstance.put(axiosInstance.getUrl('tasks', id), taskData);
-      navigate('/');
+      
+      // Set success toast
+      setToastMessage('Task updated successfully!');
+      setActiveToast(true);
+      
+      // Store success message in session storage to show on home page
+      sessionStorage.setItem('taskUpdateSuccess', 'true');
+      
+      // Redirect to home page after a short delay
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+      
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to update task. Please try again.');
       console.error('Error updating task:', error);
       throw error;
     } finally {
       setLoading(false);
+      stopProgress();
     }
   };
+
+  const toastMarkup = activeToast ? (
+    <Toast content={toastMessage} onDismiss={() => setActiveToast(false)} />
+  ) : null;
 
   if (error) {
     return (
@@ -61,6 +81,7 @@ export default function EditTaskPage() {
 
   return (
     <Page title="Edit Task">
+      {toastMarkup}
       <TaskForm 
         initialTask={task} 
         onSubmit={handleSubmit} 
