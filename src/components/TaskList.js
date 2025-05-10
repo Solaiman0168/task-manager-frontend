@@ -157,7 +157,7 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
       </Modal>
 
 
-      <Box style={{ marginBottom: '20px', fontSize: '16px' }}>
+      <Box style={{ marginBottom: '20px' }}>
           Pending tasks: {pendingTasks.length}
       </Box>
 
@@ -188,7 +188,7 @@ export default function TaskList({ pendingTasks, completedTasks, onTaskDeleted }
         )}
       </Card>
 
-      <Box style={{ marginBottom: '20px', marginTop: '20px', fontSize: '16px' }}>
+      <Box style={{ marginBottom: '20px', marginTop: '20px' }}>
           Completed tasks: {pendingTasks.length}
       </Box>
 
